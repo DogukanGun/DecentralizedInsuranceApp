@@ -88,7 +88,7 @@ const CustomNavbar = () => {
             })
         setIsConnecting(false)
     }
-    
+
     const disableConnect = Boolean(wallet) && isConnecting
 
     return (
@@ -110,6 +110,7 @@ const CustomNavbar = () => {
                             <ul className="p-2 bg-base-100">
                                 <li><Link href="/insurance/vote">Look Active Vote</Link></li>
                                 <li><Link href="/insurance/apply">Apply for Insurance</Link></li>
+                                <li><Link href="/insurance/pasive">See Pasive Votes</Link></li>
                             </ul>
                         </details>
                     </li>}

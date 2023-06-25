@@ -1,15 +1,10 @@
 import Page from "../../components/layout/page";
+import CustomTitle from "../../components/title/title";
 
 const Vote = () => {
     return (
         <Page>
-            <div className="hero h-52 bg-base-200">
-                <div className="hero-content text-center">
-                    <div className="max-w-md">
-                        <h1 className="text-5xl font-bold">Hello, Let&apos;s Vote</h1>
-                    </div>
-                </div>
-            </div>
+            <CustomTitle title="Hello, Let&apos;s Vote"/>
         </Page>
     )
 }
