@@ -1,4 +1,5 @@
 import detectEthereumProvider from "@metamask/detect-provider";
+import Link from "next/link";
 import { useEffect, useState } from "react"
 
 declare global {
@@ -87,30 +88,31 @@ const CustomNavbar = () => {
             })
         setIsConnecting(false)
     }
+    
     const disableConnect = Boolean(wallet) && isConnecting
 
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <Link href="/" className="btn btn-ghost normal-case text-xl">Decentrilazed Insurance</Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li><a><button disabled={disableConnect} onClick={handleConnect}>
-                        {wallet.accounts.length != 0 ? <p>{wallet.accounts[0]}</p> 
+                        {wallet.accounts.length != 0 ? <p>{wallet.accounts[0]}</p>
                             : isConnecting ? <p>Connecting...</p> : error ? <p>Connection Error</p> : <p>Connect MetaMask</p>}
                     </button></a></li>
-                    <li>
-                        <details>
+                    {wallet.accounts.length != 0 && <li>
+                        <details className="mr-20">
                             <summary>
-                                Parent
+                                Insurance
                             </summary>
                             <ul className="p-2 bg-base-100">
-                                <li><a>Link 1</a></li>
-                                <li><a>Link 2</a></li>
+                                <li><Link href="/insurance/vote">Look Active Vote</Link></li>
+                                <li><Link href="/insurance/apply">Apply for Insurance</Link></li>
                             </ul>
                         </details>
-                    </li>
+                    </li>}
                 </ul>
             </div>
         </div>
