@@ -4,6 +4,10 @@ pragma solidity 0.8.19;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./SolInsurance.sol";
 
+interface ISolInsurance{
+    function repay(address userWallet) external;
+}
+
 contract Repayment{
     struct InsurancePaymentRequest {
         address insuranceContractAddress;
