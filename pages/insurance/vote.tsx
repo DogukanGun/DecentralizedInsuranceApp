@@ -11,7 +11,7 @@ const Vote = () => {
                 </div>
                 <div className="col-span-12 w-1/2 h-full mx-10">
                     <div className="flex w-full text-black justify-center mt-10">
-                        Asset Value : 1200 stNear
+                        Asset Value : 1200stNear
                         Wallet Address: 0x1111
                     </div>
                     <div className="flex w-96 justify-around mt-20 mx-auto">

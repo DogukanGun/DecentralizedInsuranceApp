@@ -81,6 +81,7 @@ const CustomNavbar = () => {
             .then((accounts: []) => {
                 setError(false)
                 updateWallet(accounts)
+                sessionStorage.setItem("account",wallet.accounts[0] as string)
             })
             .catch((err: any) => {
                 setError(true)
