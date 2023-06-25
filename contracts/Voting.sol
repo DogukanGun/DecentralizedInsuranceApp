@@ -16,11 +16,13 @@ contract Voting {
         uint256 positiveVotes;
         address insuranceContract;
         bool votingCompleted;
+        //TODO File id should be added
     }
 
     struct VotingRequest {
         address userWallet;
         uint256 assetValue;
+        //TODO File id should be added
     }
     uint256 public currentSession;
     mapping(uint => mapping(address => bool)) public hasVoted;
@@ -75,29 +77,29 @@ contract Voting {
     }
 
     function vote(bool _approval) public _hasActiveVote {
-        require(!hasVoted[currentSession][msg.sender], "You have already voted.");
+            require(!hasVoted[currentSession][msg.sender], "You have already voted.");
 
-        // Check if the sender has enough stNEAR tokens to pay the fee
-        require(stNear.balanceOf(msg.sender) >= voteFee, "Insufficient stNEAR balance for voting.");
+            // Check if the sender has enough stNEAR tokens to pay the fee
+            require(stNear.balanceOf(msg.sender) >= voteFee, "Insufficient stNEAR balance for voting.");
 
-        // Deduct the vote fee from the sender's stNEAR balance
-        stNear.transferFrom(msg.sender, address(this), voteFee);
+            // Deduct the vote fee from the sender's stNEAR balance
+            stNear.transferFrom(msg.sender, address(this), voteFee);
 
-        uint256 currentVoteIndex = votes.length - 1;
-        Vote storage currentVote = votes[currentVoteIndex];
-        currentVote.totalVotes += 1;
+            uint256 currentVoteIndex = votes.length - 1;
+            Vote storage currentVote = votes[currentVoteIndex];
+            currentVote.totalVotes += 1;
 
-        if (currentVote.positiveVotes <= approvalThreshold && _approval) {
-            currentVote.positiveVotes += 1;
-        }
+            if (currentVote.positiveVotes <= approvalThreshold && _approval) {
+                currentVote.positiveVotes += 1;
+            }
 
-        if (currentVote.positiveVotes > approvalThreshold && !currentVote.votingCompleted) {
-            currentVote.votingCompleted = true;
-            address ownerWallet = currentVote.asset.ownerWallet;
-            uint256 assetValue = currentVote.asset.assetValue;
-            currentVote.insuranceContract = address(new SolInsurance(ownerWallet, assetValue));
-            hasActiveVote = false;
-            currentSession++;
+            if (currentVote.positiveVotes > approvalThreshold && !currentVote.votingCompleted) {
+                currentVote.votingCompleted = true;
+                address ownerWallet = currentVote.asset.ownerWallet;
+                uint256 assetValue = currentVote.asset.assetValue;
+                currentVote.insuranceContract = address(new SolInsurance(ownerWallet, assetValue));
+                hasActiveVote = false;
+                currentSession++;   
 
             
             if (votingQueue.length > 0) {
