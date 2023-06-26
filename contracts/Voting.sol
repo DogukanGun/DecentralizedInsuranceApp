@@ -34,6 +34,8 @@ contract Voting {
     bool public hasActiveVote;
     VotingRequest[] public votingQueue;
 
+    address public repaymentContractAddress;
+
     address public stNearTokenAddress;
     IERC20 public stNear;
 
@@ -103,7 +105,8 @@ contract Voting {
             currentVote.votingCompleted = true;
             address ownerWallet = currentVote.asset.ownerWallet;
             uint256 assetValue = currentVote.asset.assetValue;
-            currentVote.insuranceContract = address(new SolInsurance(ownerWallet, assetValue));
+            currentVote.insuranceContract = address(new SolInsurance(ownerWallet, assetValue, repaymentContractAddress, stNearTokenAddress));
+            stNear.transferFrom(address(this),currentVote.insuranceContract,voteFee);
             hasActiveVote = false;
             hasVoted[currentSession][msg.sender] = true;
             currentSession++;
@@ -114,5 +117,9 @@ contract Voting {
         }
 
     } 
+
+    function setRepaymentContractAddress(address _repaymentContractAddress) external {
+        repaymentContractAddress = _repaymentContractAddress;
+    }
 
 }
