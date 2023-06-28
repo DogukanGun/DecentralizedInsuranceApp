@@ -107,4 +107,14 @@ contract Repayment{
 
         hasVotedForRepay[currentSession][msg.sender] = true;
     } 
+    function getCurrentRepaymentVote() public view returns (address, string memory, uint256, uint256) {
+        require(hasActiveRepayVote, "There is no active repay vote.");
+
+        uint256 currentVoteIndex = repay.length - 1;
+        InsurancePayment storage currentVote = repay[currentVoteIndex];
+
+        return (currentVote.insuranceContractAddress, currentVote.reason, currentVote.totalVotes, currentVote.positiveVotes);
+}
+
+
 }

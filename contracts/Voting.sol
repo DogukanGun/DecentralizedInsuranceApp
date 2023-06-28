@@ -122,4 +122,16 @@ contract Voting {
         repaymentContractAddress = _repaymentContractAddress;
     }
 
+    function getCurrentVoteSession() public view returns (Asset memory, uint256, uint256) {
+        require(hasActiveVote, "There is no active vote.");
+
+        Vote storage currentVote = votes[votes.length - 1];
+        Asset memory asset = currentVote.asset;
+        uint256 totalVotes = currentVote.totalVotes;
+        uint256 positiveVotes = currentVote.positiveVotes;
+
+        return (asset, totalVotes, positiveVotes);
+    }
+
+
 }
