@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Page from "../../components/layout/page";
 import CustomTitle from "../../components/title/title";
-import { Web3Storage } from "web3.storage";
+//import { Web3Storage } from "web3.storage/dist/bundle.esm.min.js";
 import { useRouter } from "next/router";
 
 
@@ -30,8 +30,8 @@ const ApplyForVote = () => {
         //send vote
         try {
             if (userFile) {
-                const client = new Web3Storage({ token: process.env.NEXT_PUBLIC_WEB3_STORAGE_API_KEY ?? "" });
-                const _cid = await client.put([userFile]);
+                //const client = new Web3Storage({ token: process.env.NEXT_PUBLIC_WEB3_STORAGE_API_KEY ?? "" });
+                //const _cid = await client.put([userFile]);
                 setIsUploaded(true);
                 router.push('/');
             }
