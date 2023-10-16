@@ -1,20 +1,15 @@
 
 const CustomCarousel = () => {
     return (
-        <div className="carousel carousel-center w-full h-96 bg-neutral">
-            <div className="carousel-item w-full h-full">
-                <img src="/images/stock/photo-1559703248-dcaaec9fab78.jpg" className="rounded-box" />
-                <p>Item 1</p>
+        <div className="hero min-h-screen bg-base-200">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img src="/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
+                <div>
+                    <h1 className="text-5xl font-bold">Box Office News!</h1>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button className="btn btn-primary">Get Started</button>
+                </div>
             </div>
-            <div className="carousel-item w-full h-full">
-                <img src="/images/stock/photo-1565098772267-60af42b81ef2.jpg" className="rounded-box" />
-                <p>Item 2</p>
-            </div>
-            <div className="carousel-item w-full h-full">
-                <img src="/images/stock/photo-1572635148818-ef6fd45eb394.jpg" className="rounded-box" />
-                <p>Item 3</p>
-            </div>
-            
         </div>
     )
 }

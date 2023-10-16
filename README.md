@@ -1,3 +1,10 @@
+## Deployed Contracts
+
+Voting deployed to: `0x4e6C88BD2C76DFDA0ce867EcEd0D4cF82a00D17F`
+Repayment deployed to: `0xABEAbfb4cC4dE2Ef1f3cf0A2AD06b6d42eBB67aE`
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

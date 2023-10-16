@@ -1,6 +1,5 @@
 import CustomCard from "../components/card/card"
 import CustomCarousel from "../components/carousel/carousel"
-import CustomFooter from "../components/footer/footer"
 
 const Home = () =>{
     return(
@@ -15,7 +14,6 @@ const Home = () =>{
             <div className="w-full h-72 flex flex-row justify-end my-10">
                 <CustomCard/>
             </div>
-            <CustomFooter/>
         </div>
     )
 }
